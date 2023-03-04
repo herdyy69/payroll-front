@@ -10,6 +10,8 @@ import YoutubeFillIcon from 'remixicon-react/YoutubeFillIcon'
 import GoogleFillIcon from 'remixicon-react/GoogleFillIcon'
 import RedditFillIcon from 'remixicon-react/RedditFillIcon'
 import TwitterFillIcon from 'remixicon-react/TwitterFillIcon'
+
+
 import ThousandSeparator from '@/Utils/ThousandSeparator'
 
 import { BarList, Card, Title, Bold, Flex, Text } from '@tremor/react'
@@ -41,8 +43,36 @@ const Index = () => {
   const jabatan = dataJabatan?.data
   const status = dataStatus?.data
   const laporan = dataLaporan?.data
-  console.log(employeed)
-  const totalPengeluaran = laporan?.reduce((total, item) => {
+
+  const filter2021 = laporan?.filter(item => {
+    return item.tahun === '2021'
+  })
+  const filter2022 = laporan?.filter(item => {
+    return item.tahun === '2022'
+  })
+  const filter2023 = laporan?.filter(item => {
+    return item.tahun === 2023
+  })
+  const filter2024 = laporan?.filter(item => {
+    return item.tahun === '2024'
+  })
+  const filter2025 = laporan?.filter(item => {
+    return item.tahun === '2025'
+  })
+
+  const totalPengeluaran2021 = filter2021?.reduce((total, item) => {
+    return total + item?.total_gaji
+  }, 0)
+  const totalPengeluaran2022 = filter2022?.reduce((total, item) => {
+    return total + item?.total_gaji
+  }, 0)
+  const totalPengeluaran2023 = filter2023?.reduce((total, item) => {
+    return total + item?.total_gaji
+  }, 0)
+  const totalPengeluaran2024 = filter2024?.reduce((total, item) => {
+    return total + item?.total_gaji
+  }, 0)
+  const totalPengeluaran2025 = filter2025?.reduce((total, item) => {
     return total + item?.total_gaji
   }, 0)
 
@@ -81,51 +111,73 @@ const Index = () => {
   const datasKaryawan = [
     {
       name: 'Human Resource Development',
-      value: karyawanHRD?.length,
+      value: karyawanHRD?.length || 0,
     },
     {
       name: 'Manager',
-      value: karyawanManager?.length,
+      value: karyawanManager?.length || 0,
     },
     {
       name: 'Supervisor',
-      value: karyawanSupervisor?.length,
+      value: karyawanSupervisor?.length || 0,
     },
     {
       name: 'Staff',
-      value: karyawanStaff?.length,
+      value: karyawanStaff?.length || 0,
     },
     {
       name: 'Salesman',
-      value: karyawanSalesman?.length,
+      value: karyawanSalesman?.length || 0,
     },
     {
       name: 'Driver(Sopir)',
-      value: karyawanDriver?.length,
+      value: karyawanDriver?.length || 0,
     },
     {
       name: 'Total Karyawan',
-      value: employeed?.length,
+      value: employeed?.length || 0,
     },
   ]
   const datasStatus = [
     {
       name: 'Aktif',
-      value: karyawanAktif?.length,
+      value: karyawanAktif?.length || 0,
     },
     {
       name: 'Tidak Aktif',
-      value: karyawanTidakAktif?.length,
+      value: karyawanTidakAktif?.length || 0,
     },
   ]
   const datasJenisKelamin = [
     {
       name: 'Laki-laki',
-      value: karyawanLaki?.length,
+      value: karyawanLaki?.length || 0,
     },
     {
       name: 'Perempuan',
-      value: karyawanPr?.length,
+      value: karyawanPr?.length || 0,
+    },
+  ]
+  const data5TahunMendatang = [
+    {
+      name: '2021',
+      value: totalPengeluaran2021 || 0,
+    },
+    {
+      name: '2022',
+      value: totalPengeluaran2022 || 0,
+    },
+    {
+      name: '2023',
+      value: totalPengeluaran2023 || 0,
+    },
+    {
+      name: '2024',
+      value: totalPengeluaran2024 || 0,
+    },
+    {
+      name: '2025',
+      value: totalPengeluaran2025 || 0,
     },
   ]
 
@@ -142,7 +194,9 @@ const Index = () => {
               <Accordion expanded={false} shadow={true} marginTop="mt-0">
                 <AccordionHeader>
                   <Title size="text-2xl" marginTop="mt-0">
-                    <Bold>Quote of the day</Bold>
+                    <h1 className="text-lg font-bold italic opacity-80">
+                      QUOTES OF THE DAY
+                    </h1>
                   </Title>
                 </AccordionHeader>
                 <AccordionBody>
@@ -183,6 +237,13 @@ const Index = () => {
                 </Text>
               </Flex>
               <BarList data={datasJenisKelamin} marginTop="mt-2" />
+            </Card>
+            <Card maxWidth="max-w-xs" decoration="top" decorationColor="indigo">
+              <Text>
+                <Bold>Total Pengeluaran</Bold>
+              </Text>
+              <Divider />
+              <BarList data={data5TahunMendatang} marginTop="mt-2" />
             </Card>
           </div>
         </div>

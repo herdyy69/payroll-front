@@ -105,7 +105,11 @@ const SideBar = ({ users }) => {
           {dataSidebar?.map(item => (
             <Link key={item.id} href={item.link}>
               <li
-                className="text-indigo-100 hover:bg-indigo-900 flex gap-4 items-center transition-colors duration-300 rounded-md p-2 mx-2"
+                className={
+                  router.pathname === item.link
+                    ? `text-indigo-100 bg-indigo-900 flex gap-4 items-center transition-colors duration-300 rounded-md p-2 mx-2`
+                    : `text-indigo-100 hover:bg-indigo-900 flex gap-4 items-center transition-colors duration-300 rounded-md p-2 mx-2`
+                }
                 data-tip={item.name}
                 key={item.id}>
                 {item.icon} {item.name}

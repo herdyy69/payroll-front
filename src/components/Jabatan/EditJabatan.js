@@ -58,7 +58,7 @@ const EditJabatan = ({
   return (
     <>
       {success &&
-        toast.success('Data Berhasil Ditambahkan!', {
+        toast.success('Data Berhasil Diupdate!', {
           className: 'text-sm',
           position: 'top-right',
           autoClose: 3000,

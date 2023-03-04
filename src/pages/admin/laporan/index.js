@@ -53,12 +53,12 @@ const Index = () => {
             <div className="flex flex-row  items-center justify-between w-[90%] mt-3 p-2 gap-4 bg-slate-600 rounded-md">
               <CreateReport karyawan={dataKaryawan} laporan={dataLaporan} />
               <div className="flex flex-row items-center space-x-2">
-                <select
+                {/* <select
                   onChange={e => setSort(e.target.value)}
                   className="select select-bordered w-56 btn btn-primary border-none bg-slate-800 gap-2">
                   <option value="1">Terbaru - Terlama</option>
                   <option value="2">Terlama - Terbaru</option>
-                </select>
+                </select> */}
                 <div className="form-control w-full md:w-auto">
                   <div className="input-group">
                     <input

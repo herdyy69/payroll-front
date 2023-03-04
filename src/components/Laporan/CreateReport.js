@@ -310,7 +310,7 @@ const CreateReport = ({ karyawan, laporan, jabatan, status }) => {
         <div className="modal-box flex flex-col items-start p-4 bg-slate-800 w-[35%] opacity-100 border-2 border-white rounded-md overflow-y-auto">
           <h3 className="font-bold text-lg">Tambah Data Karyawan</h3>
           <span className="text-sm">Silahkan isi data karyawan</span>
-          <div className="flex flex-row flex-wrap mt-5">
+          <div className="flex flex-row flex-wrap mt-5 w-full">
             <input
               type="hidden"
               name=" tanggal_laporan "
